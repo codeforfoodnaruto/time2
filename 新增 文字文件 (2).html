@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { margin: 0; }
+    </style>
+</head>
+<body>
+    <script>
+        function convertUnixTimestamp(unixTimestamp) {
+            var date = new Date(unixTimestamp * 1000);
+            var year = date.getFullYear();
+            var month = ('0' + (date.getMonth() + 1)).slice(-2);
+            var day = ('0' + date.getDate()).slice(-2);
+            var hour = ('0' + date.getHours()).slice(-2);
+            var minute = ('0' + date.getMinutes()).slice(-2);
+            var second = ('0' + date.getSeconds()).slice(-2);
+
+            return  hour + ':' + minute + ':' + second;
+        }
+        
+        var urlParams = new URLSearchParams(window.location.search);
+        var unixTimestamp = parseInt(urlParams.get('timestamp'));
+        var formattedDate = convertUnixTimestamp(unixTimestamp);
+        
+        document.write(formattedDate);
+    </script>
+</body>
+</html>
